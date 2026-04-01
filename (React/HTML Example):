@@ -1,0 +1,17 @@
+<div id="paypal-button-container-subscription"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&vault=true&intent=subscription"></script>
+
+<script>
+  paypal.Buttons({
+    style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
+    createSubscription: function(data, actions) {
+      return actions.subscription.create({
+        /* This connects to the plan you create in your PayPal dashboard */
+        'plan_id': 'P-XXXXXXXX' 
+      });
+    },
+    onApprove: function(data, actions) {
+      alert('Subscription successful for Rangerbleau11@gmail.com! ID: ' + data.subscriptionID);
+    }
+  }).render('#paypal-button-container-subscription');
+</script>
